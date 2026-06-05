@@ -16,7 +16,7 @@ namespace EfDataLayer
         {
             modelBuilder.Entity<Component>().HasMany(s => s.Ports).WithOne(s => s.Component);
 
-            //modelBuilder.Entity<Component>().Navigation(e => e.Ports).AutoInclude();
+            modelBuilder.Entity<Component>().Navigation(e => e.Ports).AutoInclude();
         }
     }
      
