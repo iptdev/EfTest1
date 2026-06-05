@@ -9,6 +9,15 @@ namespace EfDataLayer
         public DbSet<B> Bs { get; set; }
         public DbSet<C> Cs { get; set; }
         public DbSet<R> Rs { get; set; }
+        public DbSet<Component> Components { get; set; }
+        public DbSet<Port> Ports { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Component>().HasMany(s => s.Ports).WithOne(s => s.Component);
+
+            //modelBuilder.Entity<Component>().Navigation(e => e.Ports).AutoInclude();
+        }
     }
      
     public class SQLiteDataContext : MyDbContext

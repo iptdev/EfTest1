@@ -10,9 +10,19 @@ var b = new B() { x = 10 };
 var r = new R() { Value = 80 };
 var c = new C() { X = 20, R = r };
 
+var pump = new Component() { Id = Guid.NewGuid(), Name = "Pump" };
+var inlet = new Port()
+{ 
+    Id = Guid.NewGuid(), Name = "Inlet", 
+    Component = pump, ComponentId = pump.Id
+};
+
 context.Add(b);
 context.Add(c);
 context.Add(r);
+
+context.Add(pump);
+pump.Ports.Add(inlet);
 
 Console.WriteLine("C.X = " + c.X.ToString());
 context.SaveChanges();
