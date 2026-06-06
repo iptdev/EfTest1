@@ -10,17 +10,21 @@ var b = new B() { x = 10 };
 var r = new R() { Value = 80 };
 var c = new C() { X = 20, R = r };
 
-var pump = new Component() { Id = Guid.NewGuid(), Name = "Pump" };
-var inlet = new Port()
+var pump = new ComponentClass() { Id = Guid.NewGuid(), Name = "Pump" };
+var inlet = new ComponentClassPort()
 { 
     Id = Guid.NewGuid(), Name = "Inlet", 
     Component = pump, ComponentId = pump.Id
 };
 
+
+// ComponentClass with no ports
+var junction = new ComponentClass() { Id = Guid.NewGuid(), Name = "Junction" };
+
 context.Add(b);
 context.Add(c);
 context.Add(r);
-
+context.Add(junction);
 context.Add(pump);
 pump.Ports.Add(inlet);
 

@@ -15,3 +15,13 @@ var pump = context.Components.FirstOrDefault(c => c.Name == "Pump");
 Console.WriteLine("Pump found: " + pump.Name);
 var inlet = pump.Ports.FirstOrDefault(p => p.Name == "Inlet");
 Console.WriteLine("Inlet found: " + inlet.Name);
+var junction = context.Components.FirstOrDefault(c => c.Name == "Junction");
+Console.WriteLine("Junction found: " + junction.Name);
+foreach (var port in pump.Ports)
+{
+    Console.WriteLine("Pump port: " + port.Name);
+}
+foreach (var port in junction.Ports)
+{
+    Console.WriteLine("Junction port: " + port.Name);
+}
